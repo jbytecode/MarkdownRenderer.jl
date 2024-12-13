@@ -92,6 +92,12 @@ end
     @test String(take!(io)) == "| Test | Test |\n|--|--|\n| R1C1 | R1C2 |\n| R2C1 | R2C2 |\n"
 end
 
+@testset "Equation" begin
+    io = IOBuffer()
+    render(io, Equation("\\frac{1}{2}"))
+    @test String(take!(io)) == "\$\$\n\n\\frac{1}{2}\n\$\$\n\n"
+end
+
 @testset "Group of objects" begin
     io = IOBuffer()
     objects = [

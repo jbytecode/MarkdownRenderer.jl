@@ -12,6 +12,7 @@ export Quoted
 export HorizontalRule
 export OrderedList
 export UnorderedList
+export Equation
 
 
 abstract type MarkDownObject end 
@@ -57,6 +58,10 @@ end
 
 struct UnorderedList <: MarkDownObject
     text::Vector
+end
+
+struct Equation <: MarkDownObject
+    text::String
 end
 
 
@@ -116,6 +121,12 @@ function render(io::IO, objects::Vector{T}) where T <: MarkDownObject
     for object in objects
         render(io, object)
     end
+end
+
+function render(io::IO, eq::Equation)
+    println(io, "\$\$\n")
+    println(io, eq.text)
+    println(io, "\$\$\n")
 end
 
 
