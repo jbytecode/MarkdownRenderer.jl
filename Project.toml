@@ -1,0 +1,4 @@
+name = "MarkdownRenderer"
+uuid = "377b5d60-c9e3-470c-9194-38481d3a1d94"
+authors = ["mhsatman@gmail.com <mhsatman@gmail.com>"]
+version = "0.1.0"
