@@ -36,3 +36,39 @@ render(io, OrderedList(["item1", "item2"]))
 render(io, UnorderedList(["item1", "item2"]))
 # close(io)
 ```
+
+The rendered output is written to `io` and can be collected with 
+
+```julia
+md = String(take!(io))
+"# Test\n## Test\n### Test\n#### Test\n##### Test\n###### Test\nTest\n```julia\nprintln(1)\n```\n![Description](test.png)\n| a | b |\n|--|--|\n| 1 | 2 |\n| 3 | 4 |\n[Description](test.png)\n> Test\n----\n1. item1\n2. item2\n- item1\n- item2\n"
+```
+
+and it is rendered as 
+
+# Test
+## Test
+### Test
+#### Test
+##### Test
+###### Test
+Test
+```julia
+println(1)
+```
+![Description](test.png)
+| a | b |
+|--|--|
+| 1 | 2 |
+| 3 | 4 |
+[Description](test.png)
+> Test
+----
+1. item1
+2. item2
+- item1
+- item2
+
+
+
+
