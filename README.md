@@ -69,6 +69,29 @@ println(1)
 - item1
 - item2
 
+## Using Pandoc to convert the output to PDF
 
+```julia
+# Create a random 3x3 matrix
+m = rand(3,3)
+
+# Open a file in write mode
+myfile = open("test.md", "w")
+
+# Render the header
+render(myfile, MarkdownRenderer.Header(1, "Here is the random matrix"))
+
+# Render the matrix as a table
+render(myfile, MarkdownRenderer.Table(["1", "2", "3"], m))
+
+# Render a link
+render(myfile, MarkdownRenderer.Link("Github", "https://github.com"))
+
+# Close the file
+close(myfile)
+
+# Convert to PDF
+run(`pandoc -o test.pdf test.md`)
+```
 
 
